@@ -31,7 +31,6 @@ public class TileBoard : MonoBehaviour
         }
 
         tiles.Clear();
-        gameManager.UpdateAttackValue();
     }
 
     public int GetAttackValue()
@@ -52,7 +51,6 @@ public class TileBoard : MonoBehaviour
         tile.SetState(tileStates[0],2);
         tile.Spawn(grid.GetRandomEmptyCell());
         tiles.Add(tile);
-        gameManager.UpdateAttackValue();
     }
 
     private void Update()
@@ -149,7 +147,6 @@ public class TileBoard : MonoBehaviour
 
         gameManager.IncreaseScore(number);
         gameManager.AddGold(10);
-        gameManager.UpdateAttackValue();
     }
 
     private int IndexOf(TileState state)
@@ -182,8 +179,6 @@ public class TileBoard : MonoBehaviour
         {
             CreateTile();
         }
-
-        gameManager.UpdateAttackValue();
 
         if (CheckForGameOver())
         {
