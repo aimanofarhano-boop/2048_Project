@@ -14,10 +14,14 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private Transform canvasParent;
 
+    [SerializeField]
+    private float spawnInterval = 0.5f;
+
     private float timeBettweenSpawns;
     private int i = 0;
 
     private bool stopSpawning = false;
+    private bool isSpawningWave = false;
 
     private void Awake()
     {
@@ -33,24 +37,29 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        if (Time.time >= timeBettweenSpawns)
+        if (Time.time >= timeBettweenSpawns && !isSpawningWave)
         {
-            SpawnWave();
-            IncWave();
-
-            timeBettweenSpawns = Time.time + currentWave.TimeBeforeThisWave;
+            StartCoroutine(SpawnWaveRoutine());
         }
     }
 
-    private void SpawnWave()
+    private IEnumerator SpawnWaveRoutine()
     {
-        for (int i = 0; i < currentWave.NumberToSpawn; i++)
+        isSpawningWave = true;
+
+        int spawnCount = Mathf.RoundToInt(currentWave.NumberToSpawn);
+        for (int j = 0; j < spawnCount; j++)
         {
             int num = Random.Range(0, currentWave.EnemiesInWave.Length);
             int num2 = Random.Range(0, spawnPoints.Length);
             
             Instantiate(currentWave.EnemiesInWave[num], spawnPoints[num2].position, spawnPoints[num2].rotation, canvasParent);
+            yield return new WaitForSeconds(spawnInterval);
         }
+
+        IncWave();
+        timeBettweenSpawns = Time.time + currentWave.TimeBeforeThisWave;
+        isSpawningWave = false;
     }
 
     private void IncWave()
