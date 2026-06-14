@@ -26,6 +26,7 @@ public class DestroyOnPlayerCollision : MonoBehaviour
     {
         if (IsPlayerObject(collision.gameObject))
         {
+            DamagePlayer(collision.gameObject);
             Destroy(gameObject);
         }
     }
@@ -34,7 +35,19 @@ public class DestroyOnPlayerCollision : MonoBehaviour
     {
         if (IsPlayerObject(other.gameObject))
         {
+            DamagePlayer(other.gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    private void DamagePlayer(GameObject playerGO)
+    {
+        Player player = playerGO.GetComponent<Player>();
+        if (player != null)
+        {
+            Enemy enemy = GetComponent<Enemy>();
+            int damageAmount = enemy != null ? enemy.Damage : 10;
+            player.TakeDamage(damageAmount);
         }
     }
 }

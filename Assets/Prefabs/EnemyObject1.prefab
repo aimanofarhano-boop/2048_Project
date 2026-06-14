@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1505123469072240407}
   - component: {fileID: 4814789558372034790}
   - component: {fileID: 6493689937575791949}
+  - component: {fileID: -4879828319167826133}
   m_Layer: 5
   m_Name: EnemyObject1
   m_TagString: Untagged
@@ -126,6 +127,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 65.03, y: 37.11}
   m_EdgeRadius: 0
+--- !u!114 &-4879828319167826133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016429742113501356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dca519840e8d7347be0f0c4bd9c18a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  damage: 10
 --- !u!1 &3071914931334521842
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,15 +9,28 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI goldText;
+    public TextMeshProUGUI playerHpText;
 
     private int score;
     private int gold;
+    private Player player;
 
     public int Gold { get { return gold; } }
 
     private void Start()
     {
+        FindPlayer();
         NewGame();
+    }
+
+    private void FindPlayer()
+    {
+        player = FindObjectOfType<Player>();
+        if (player != null && playerHpText != null)
+        {
+            player.SetHealthText(playerHpText);
+            playerHpText.text = player.Health.ToString();
+        }
     }
 
     public void NewGame()

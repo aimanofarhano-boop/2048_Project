@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: -4787732841117591781}
   - component: {fileID: 5603531793701669113}
   - component: {fileID: -5417462914335375009}
+  - component: {fileID: -8692784941209416732}
   m_Layer: 5
   m_Name: EnemyObject2
   m_TagString: Untagged
@@ -263,6 +264,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DestroyOnPlayerCollision
   playerObject: {fileID: 8465393372790665960, guid: 5f999fcbd1596384b86c161df0d5e91a, type: 3}
   playerTag: Player
+--- !u!114 &-8692784941209416732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046536786070924544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dca519840e8d7347be0f0c4bd9c18a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  damage: 10
 --- !u!1 &6787197724702121077
 GameObject:
   m_ObjectHideFlags: 0
