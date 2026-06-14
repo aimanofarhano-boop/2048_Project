@@ -247,7 +247,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 65, y: 38}
   m_EdgeRadius: 0
 --- !u!114 &-5417462914335375009
 MonoBehaviour:
@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyOnPlayerCollision
   playerObject: {fileID: 8465393372790665960, guid: 5f999fcbd1596384b86c161df0d5e91a, type: 3}
+  playerTag: Player
 --- !u!1 &6787197724702121077
 GameObject:
   m_ObjectHideFlags: 0
