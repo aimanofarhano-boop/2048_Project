@@ -2424,6 +2424,7 @@ MonoBehaviour:
   highScoreText: {fileID: 225664598}
   goldText: {fileID: 1135240504}
   playerHpText: {fileID: 522972915}
+  totalValueText: {fileID: 1339026708}
 --- !u!1 &1233290554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,6 +2908,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336029379}
   m_CullTransparentMesh: 1
+--- !u!114 &1339026708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5260534575590845329, guid: a5acf3e48589dcc4e82c5100cabdd7bb, type: 3}
+  m_PrefabInstance: {fileID: 7174993814850679686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1385057954
 GameObject:
   m_ObjectHideFlags: 0

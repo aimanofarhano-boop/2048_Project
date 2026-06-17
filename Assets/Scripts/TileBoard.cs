@@ -51,6 +51,7 @@ public class TileBoard : MonoBehaviour
         tile.SetState(tileStates[0],2);
         tile.Spawn(grid.GetRandomEmptyCell());
         tiles.Add(tile);
+        gameManager.updateTotalValue();
     }
 
     private void Update()
@@ -147,6 +148,8 @@ public class TileBoard : MonoBehaviour
 
         gameManager.IncreaseScore(number);
         gameManager.AddGold(10);
+
+        gameManager.updateTotalValue();
     }
 
     private int IndexOf(TileState state)

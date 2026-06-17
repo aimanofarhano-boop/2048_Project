@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI playerHpText;
+    public TextMeshProUGUI totalValueText;
 
     private int score;
     private int gold;
@@ -45,6 +46,9 @@ public class GameManager : MonoBehaviour
         board.ClearBoard();
         board.CreateTile();
         board.CreateTile();
+
+        updateTotalValue();
+
         board.enabled = true;
     }
 
@@ -132,5 +136,13 @@ public class GameManager : MonoBehaviour
     private int LoadGold()
     {
         return PlayerPrefs.GetInt("gold", 0);
+    }
+
+    public void updateTotalValue()
+    {
+        if(totalValueText != null)
+        {
+            totalValueText.text = board.GetAttackValue().ToString();
+        }
     }
 }
