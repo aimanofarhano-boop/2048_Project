@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   damage: 10
+  healthText: {fileID: 4832988353516857649}
 --- !u!1 &3071914931334521842
 GameObject:
   m_ObjectHideFlags: 0

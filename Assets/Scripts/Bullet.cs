@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage = 4;
     private float lifetime = 5f;
 
     private void Start()

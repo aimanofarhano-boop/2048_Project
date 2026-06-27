@@ -23,6 +23,8 @@ public class WaveSpawner : MonoBehaviour
     private bool stopSpawning = false;
     private bool isSpawningWave = false;
 
+    private int nextEnemyHealth = 100;
+
     private void Awake()
     {
         currentWave = waves[i];
@@ -53,7 +55,17 @@ public class WaveSpawner : MonoBehaviour
             int num = Random.Range(0, currentWave.EnemiesInWave.Length);
             int num2 = Random.Range(0, spawnPoints.Length);
             
-            Instantiate(currentWave.EnemiesInWave[num], spawnPoints[num2].position, spawnPoints[num2].rotation, canvasParent);
+            GameObject enemyObj = Instantiate(currentWave.EnemiesInWave[num], spawnPoints[num2].position, spawnPoints[num2].rotation, canvasParent);
+
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.Initialize(nextEnemyHealth);
+            }
+
+            nextEnemyHealth *= 2;
+
             yield return new WaitForSeconds(spawnInterval);
         }
 
