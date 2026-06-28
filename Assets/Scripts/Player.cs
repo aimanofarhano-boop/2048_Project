@@ -13,16 +13,23 @@ public class Player : MonoBehaviour
     public float shootInterval = 1f;
     public float attackRange = 10f;
     public float bulletSpeed = 20f;
+    public int attack = 4;
     
     private float shootTimer = 0f;
 
     public int Health { get { return health; } }
+    public int Attack { get { return attack; } }
+
+    public void SetAttack(int value)
+    {
+        attack = Mathf.Max(0, value);
+    }
 
     private void Start()
     {
         health = 100;
         UpdateHealthDisplay();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
         shootTimer = shootInterval;
     }
 
@@ -55,6 +62,16 @@ public class Player : MonoBehaviour
         Vector3 shootPos = shootPoint != null ? shootPoint.position : transform.position;
         GameObject bullet = Instantiate(bulletPrefab, shootPos, Quaternion.identity, bulletParent != null ? bulletParent : null);
 
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        if (bulletComponent != null)
+        {
+            bulletComponent.damage = Attack;
+        }
+        else
+        {
+            Debug.LogWarning("Bullet prefab needs a Bullet component.", bullet);
+        }
+
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         if (bulletRb != null)
         {
@@ -69,7 +86,7 @@ public class Player : MonoBehaviour
 
     private Enemy FindClosestEnemy()
     {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        Enemy[] enemies = FindObjectsByType<Enemy>();
         Enemy closest = null;
         float closestDistance = float.MaxValue;
 

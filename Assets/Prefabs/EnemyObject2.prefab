@@ -203,7 +203,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!61 &5603531793701669113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   damage: 10
+  moveSpeed: 10
+  healthText: {fileID: 8409884423941763257}
 --- !u!1 &6787197724702121077
 GameObject:
   m_ObjectHideFlags: 0

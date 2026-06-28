@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void FindPlayer()
     {
-        player = FindObjectOfType<Player>();
+        player = FindAnyObjectByType<Player>();
         if (player != null && playerHpText != null)
         {
             player.SetHealthText(playerHpText);
@@ -140,9 +140,16 @@ public class GameManager : MonoBehaviour
 
     public void updateTotalValue()
     {
+        int attackValue = board.GetAttackValue();
+
         if(totalValueText != null)
         {
-            totalValueText.text = board.GetAttackValue().ToString();
+            totalValueText.text = attackValue.ToString();
+        }
+
+        if (player != null)
+        {
+            player.SetAttack(attackValue);
         }
     }
 }
