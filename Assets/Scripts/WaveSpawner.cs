@@ -25,6 +25,8 @@ public class WaveSpawner : MonoBehaviour
 
     private int nextEnemyHealth = 100;
 
+    private int enemyCount = 0;
+
     private void Awake()
     {
         currentWave = waves[i];
@@ -61,7 +63,10 @@ public class WaveSpawner : MonoBehaviour
 
             if (enemy != null)
             {
+                enemyCount++;
+
                 enemy.Initialize(nextEnemyHealth);
+                enemy.setDamage(getEnemyDamage());
             }
 
             nextEnemyHealth *= 2;
@@ -85,5 +90,15 @@ public class WaveSpawner : MonoBehaviour
         {
             stopSpawning = true;
         }
+    }
+
+    private int getEnemyDamage()
+    {
+        int damage = enemyCount * 5; //enemy count starts at 1
+        if (enemyCount % 5 == 0)
+        {
+            damage += 5;
+        }
+        return damage;
     }
 }

@@ -1,9 +1,19 @@
 using UnityEngine;
 using TMPro;
+using System.Xml.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-    public int damage = 5;
+    [SerializeField]
+    private int damage = 5;
+
+    public int Damage => damage;
+
+    public void setDamage(int value)
+    {
+        damage = value;
+    }
+
     public float moveSpeed = 1.5f;
     public float destroyBelowY = -10f;
     private int health;
@@ -39,7 +49,7 @@ public class Enemy : MonoBehaviour
         updateHealthText();
     }
 
-    public int Damage { get { return damage; } }
+    //public int Damage { get { return damage; } }
 
     public void TakeDamage(int damageAmount)
     {
