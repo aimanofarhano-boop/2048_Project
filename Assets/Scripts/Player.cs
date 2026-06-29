@@ -120,6 +120,13 @@ public class Player : MonoBehaviour
         UpdateHealthDisplay();
     }
 
+    public void ResetForNewGame()
+    {
+        health = 100;
+        shootTimer = shootInterval;
+        UpdateHealthDisplay();
+    }
+
     private void UpdateHealthDisplay()
     {
         if (healthText != null)
@@ -136,7 +143,14 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        // Handle player death
-        Destroy(gameObject);
+        if (gameManager == null)
+        {
+            gameManager = FindAnyObjectByType<GameManager>();
+        }
+
+        if (gameManager != null)
+        {
+            gameManager.GameOver();
+        }
     }
 }

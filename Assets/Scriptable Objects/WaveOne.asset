@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 1016429742113501356, guid: 02cc3e705760bdc458efb849bda4d5d4, type: 3}
   - {fileID: 3046536786070924544, guid: 604a806a99c4fb7438aa58ec2a776ae7, type: 3}
   <TimeBeforeThisWave>k__BackingField: 2
-  <NumberToSpawn>k__BackingField: 4
+  <NumberToSpawn>k__BackingField: 6

@@ -27,15 +27,27 @@ public class WaveSpawner : MonoBehaviour
 
     private int enemyCount = 0;
 
+    private void Start()
+    {
+        ResetSpawner();
+    }
+
     private void Awake()
     {
-        currentWave = waves[i];
-        timeBettweenSpawns = currentWave.TimeBeforeThisWave;
+        if (waves != null && waves.Length > 0)
+        {
+            currentWave = waves[0];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentWave == null)
+        {
+            return;
+        }
+
         if(stopSpawning)
         {
             return;
@@ -100,5 +112,35 @@ public class WaveSpawner : MonoBehaviour
             damage += 5;
         }
         return damage;
+    }
+
+    public void ResetSpawner()
+    {
+        StopAllCoroutines();
+
+        Enemy[] enemies = FindObjectsByType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy.gameObject);
+            }
+        }
+
+        i = 0;
+        stopSpawning = false;
+        isSpawningWave = false;
+        nextEnemyHealth = 100;
+        enemyCount = 0;
+
+        if (waves == null || waves.Length == 0)
+        {
+            currentWave = null;
+            timeBettweenSpawns = 0f;
+            return;
+        }
+
+        currentWave = waves[0];
+        timeBettweenSpawns = Time.time + currentWave.TimeBeforeThisWave;
     }
 }
